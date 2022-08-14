@@ -48,9 +48,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.waseefakhtar.doseapp.R
 import com.waseefakhtar.doseapp.domain.model.Medication
 import com.waseefakhtar.doseapp.extension.toFormattedString
+import com.waseefakhtar.doseapp.feature.addmedication.viewModel.MedicationAddViewModel
 import com.waseefakhtar.doseapp.util.Recurrence
 import com.waseefakhtar.doseapp.util.TimesOfDay
 import com.waseefakhtar.doseapp.util.getRecurrenceList
@@ -65,8 +67,10 @@ fun AddMedicationRoute(
     onBackClicked: () -> Unit,
     navigateToMedicationConfirm: (Medication) -> Unit,
     modifier: Modifier = Modifier,
-    // viewModel: CalendarViewModel = hiltViewModel()
+    viewModel: MedicationAddViewModel = hiltViewModel()
 ) {
+    val state = viewModel.state
+
     AddMedicationScreen(onBackClicked, navigateToMedicationConfirm)
 }
 
